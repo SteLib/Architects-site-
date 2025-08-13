@@ -30,4 +30,4 @@ A dynamic web application built with **Spring Boot**, designed to showcase archi
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Architects-site-.git
+   git clone https://github.com/SteLib/Architects-site-.git
