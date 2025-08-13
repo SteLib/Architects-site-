@@ -1,2 +1,33 @@
-# Architects-site-
-A dynamic web Spring Boot app showcasing architect profiles and projects with a top navigation bar and footer social links. Guests browse public portfolios; registered users save favorites, comment, and request new designs; admins manage profiles, projects, and user accounts.
+# 🏛️ Architects-site-
+
+A dynamic web application built with **Spring Boot**, designed to showcase architect profiles and their projects. The platform offers a seamless experience for guests, registered users, and administrators, with intuitive navigation and interactive features.
+
+## 🚀 Features
+
+### 👤 Guest Users
+- Browse public architect portfolios
+- View project galleries and descriptions
+- Access social media links via footer
+
+### 📝 Registered Users
+- Save favorite architects and projects
+- Leave comments and feedback
+- Submit requests for custom designs
+
+### 🔧 Admin Panel
+- Manage architect profiles and project entries
+- Moderate user comments and requests
+- Oversee user accounts and permissions
+
+## 🛠️ Tech Stack
+
+- **Backend**: Spring Boot, Spring Security, JPA/Hibernate
+- **Frontend**: Thymeleaf, HTML/CSS, JavaScript
+- **Database**: PostgreSQL
+- **Authentication**: Role-based access control (Guest, User, Admin)
+
+## 📦 Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/Architects-site-.git
