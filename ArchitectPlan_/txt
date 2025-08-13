@@ -1,0 +1,16 @@
+login, credianziali, user ecc... //fatto
+
+creare i modelli(ecc...): Progetto, Architetto, Richiesta //fatto
+							
+Utenti:
+Non_registrato: visualizza Architetti, //fatto
+				visualizza la pagina iniziale(presentazione azienda), //fatto
+				visualizza progetti //fatto
+				
+Custormer(utente registrato): le stesse cose di utente non registrato, aggiungi richiesta di un progetto, 
+							visualizza risulato progetto (può fare anche le operazioni di non_registrato)
+							
+Architetto: aggiungere progetto a elencoProgetti, elimina progetto, elimina una richiesta di un progetto
+		(può fare anche le operazioni di non_registrato)
+		
+Admin: aggiunge e rimuove Architetto, aggiungi e rimuove cliente (può fare anche le operazioni di non_registrato, customer)

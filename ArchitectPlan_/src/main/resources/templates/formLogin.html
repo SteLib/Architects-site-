@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ArchictPlan - Login</title>
+    <link rel="stylesheet" href="/css/stile.css" />
+</head>
+<body>
+    <header>
+        <div>
+            <div>
+                <a href="/"><img src="/images/home.png" width="2%" alt="Home"/></a>
+            </div>   
+            <div th:if="${userDetails}">
+                <a th:text="${userDetails.username}" class="nav-log"></a><br>
+                <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+            </div>
+            <div th:unless="${userDetails}">
+                <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+            </div>
+            <div>
+                <a href="/project" class="nav-link">Projects</a>
+                <a href="/architect" class="nav-link">Architects</a>
+                <a href="/formSearchProject">Search a project</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Login</h1>
+        <form th:action="@{/login}" method="POST">
+            <div>
+                <span>Username:</span>
+                <span><input name="username" type="text" required /></span>
+            </div>
+            <div>
+                <span>Password:</span>
+                <span><input name="password" type="password" required /></span>
+            </div>
+            <div>
+                <span th:if="${param.error != null}">Username o password errati</span>
+            </div>
+            <div>
+                <span><button type="submit">Login</button></span>
+            </div>
+        </form>
+        <a th:href="@{/register}" class="register-link">Register</a>
+    </div>
+	
+	<footer>
+	       <p>Contact us: info@architectplan.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	  </footer>
+</body>
+</html>

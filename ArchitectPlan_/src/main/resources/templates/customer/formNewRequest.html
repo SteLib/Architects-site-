@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Make a new request</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="icon" href="static/favicon.png" type="image/png">
+</head>	
+
+<body>
+	<header>
+		     <div>
+		         <div>
+		             <a href="/"><img src="/images/home.png" alt="Home" /></a>
+		         </div>   
+		         <div th:if="${userDetails}">
+		             <a th:text="${userDetails.username}" class="nav-log"></a><br>
+		             <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+		         </div>
+		         <div th:unless="${userDetails}">
+		             <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+		         </div>
+		         <div>
+		             <a href="/project" class="nav-link">Projects</a>
+		             <a href="/architect" class="nav-link">Architects</a>
+		             <a href="/formSearchProject" class="nav-link">Search a project</a>
+		        	 <a href="/customer/indexRequest">Manage request</a>
+				  </div>
+			  </div>
+		</header>
+		
+		<div th:if="${messaggeErrorRequestAlredyExist}" class="error-message">
+		    <p th:text="${messaggeErrorRequestAlredyExist}">You can not send two request at the same time</p>
+		</div>
+		
+		<div class="form-container">
+		    <h1 class="highlight">Add request:</h1>
+		    <form th:action="@{/customer/request}" method="POST" th:object="${request}" enctype="multipart/form-data" class="login-form">
+		        <div>
+		            <label>Name:</label> <span><input required type="text" th:field="${request.name}" class="form-input" /></span>
+		            <span th:if="${#fields.hasErrors('name')}" th:errors="${request.name}"></span>
+		        </div>
+		        
+		        <div>
+		            <label>Description:</label> 
+		            <span><textarea required th:field="${request.description}" class="form-input textarea-description"></textarea></span>
+		            <span th:if="${#fields.hasErrors('description')}" th:errors="${request.description}"></span>
+		        </div>
+		
+		        <!-- Aggiungi questo blocco per mostrare un messaggio di errore -->
+				<div th:if="${#fields.hasErrors('name')}">
+				    <span>La tua richiesta è già stata presentata, non puoi farne due contemporaneamente</span>
+				</div>
+		
+		        <div>
+		            <span><button type="submit" class="btn">Send request</button></span>
+		        </div>
+		    </form>
+		</div>
+
+	
+	<footer>
+	       <p>Contact us: info@architectplan.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	</footer>
+</body>
+</html>

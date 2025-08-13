@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>	ArchitectPlan - projects</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<!-- Header -->
+	<header>
+				    <div>
+				        <div>
+				            <a href="/"><img src="/images/home.png" alt="Home" /></a>
+				        </div>   
+			       <div th:if="${userDetails}">
+				           <a th:text="${userDetails.username}" class="nav-log"></a><br>
+				           <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				   </div>
+				   <div th:unless="${userDetails}">
+				           <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+			       </div>
+				   <div>
+				           <a href="/project" class="nav-link">Projects</a>
+				           <a href="/architect" class="nav-link">Architects</a>
+				           <a href="/formSearchProject" class="nav-link">Search a project</a>
+				           <a href="/architect/indexRequest">Manage request</a>
+						   <a href="/architect/indexProject">Manage project</a>
+					 </div>
+				</div>
+			</header>
+				
+	<!--Home-->			
+	<div class="home">
+	    <div class="home-content">
+			<div class="centered-elements">
+	        <h1 class="highlight">Consult the archive</h1>
+	        <div class="item-list">
+	            <a href="/architect" class="btn"><img src="/images/architect-icon.jpeg" alt="Manage request" />List of Architects</a>
+	            <a href="/project" class="btn"><img src="/images/project-icon.jpeg" alt="Manage request" />Project List</a>
+	            <a href="/customer/request" class="btn"><img src="/images/request-icon.jpeg" alt="Manage request" />Request List</a>
+	        </div>
+			
+	        <h1 class="highlight">Operations for architect</h1>
+			 <div class="item-list">
+	            <a href="/architect/indexProject" class="btn"><img src="/images/project-icon.jpeg" alt="Manage request" />Project operations</a>
+	            <a href="/architect/indexRequest" class="btn"><img src="/images/request-icon.jpeg" alt="Manage request" />Operations on requests</a>
+	        </div>
+	    </div>
+	</div>
+			<footer>
+			       <p>Contact us: info@architectplan.com</p>
+			       <p>Follow us on 
+			           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+			           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+					<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+				</p>
+			  </footer>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ArchitectPlan - Link Project to Architect</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="icon" href="static/favicon.png" type="image/png">
+</head>
+
+<body class="body">
+	<header class="header">
+					   <div>
+					     <div>
+						      <a href="/"><img src="/images/home.png" alt="Home" /></a>
+				         </div>   
+						 
+						  <div th:if="${userDetails}">
+						        <a th:text="${userDetails.username}" class="nav-log"></a><br>
+					            <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+						 </div>
+						  <div th:unless="${userDetails}">
+							           <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+						  </div>
+						  
+					      <div>
+							       <a href="/project" class="nav-link">Projects</a>
+							       <a href="/architect" class="nav-link">Architects</a>
+							       <a href="/formSearchProject" class="nav-link">Search a project</a>
+							       <a href="/architect/indexRequest" class="nav-link">Manage request</a>
+							       <a href="/architect/indexProject"  class="nav-link">Manage project</a>
+						     	   <a href="/admin/indexArchitect" class="nav-link">Manage architect</a>
+							</div>
+						</div>
+					</header>
+	<!--Home-->
+	<div class="home">
+		<h1 class="home-text">Projects to link</h1>
+		<div th:if="${projects==null || projects.isEmpty()}">There are no projects in the system</div>
+		<ul class="item-list">
+			<li th:each="project : ${projects}"><br>
+				<span th:text="${project.name}" class="highlight">Progetto</span><br><br>
+				<a th:href="@{'/admin/setArchitectToProject' + '/' + ${architect.id} + '/' + ${project.id}}" class="btn">Add</a>						
+			</li>												
+		</ul>
+	</div>
+	
+	<footer>
+		<p>Contact us: info@architectplan.com</p>	
+		<p>Follow us on 
+			<a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+			<a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	</footer>
+</body>
+
+</html>

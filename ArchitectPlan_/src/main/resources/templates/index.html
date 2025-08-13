@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ArchitectPlan Homepage</title>
+    <link rel="stylesheet" href="/css/stile.css" />
+    <link rel="icon" href="static/favicon.png" type="image/png">
+</head>    
+
+<body>
+    <header>
+        <div>
+            <div>
+                <a href="/"><img src="/images/home.png" width="2%"/></a>
+            </div>   
+            <div th:if="${userDetails}">
+                <a th:text="${userDetails.username}" class="nav-log"></a><br>
+                <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+            </div>
+            <div th:unless="${userDetails}">
+                <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+            </div>
+            <div>
+                <a href="/project" class="nav-link">Projects</a>
+                <a href="/architect" class="nav-link">Architects</a>
+                <a href="/formSearchProject">Search a project</a>
+            </div>
+        </div>
+    </header>
+    
+    <div>
+        <a href="/"><img src="/images/logo-siw.jpeg" width="25%" class="logo"/></a>
+    </div>   
+    
+    <section class="home" id="home">
+        <div class="home-content container">
+            <div class="home-text">
+                <p>Welcome to ArchitectPlan - Innovation and Design in Architecture</p>
+                <p>ArchitectPlan is the point of reference for contemporary architecture, where creativity and functionality meet to create unique and timeless spaces. We are a team of visionary architects, dedicated to transforming ideas into tangible realities, through an integrated and personalized approach.</p>
+                <p>Who we are:</p>
+                <p>Our team is made up of experienced and talented professionals, with a shared passion for innovation and design. Each project is an opportunity to explore new horizons and challenge the limits of the possible, creating architectural solutions that perfectly meet the needs of our clients.</p>
+                <p>Projects:</p>
+                <p>Browse our portfolio to discover some of our most emblematic creations. Each project tells a story of passion, commitment and creativity, highlighting our ability to face diverse and complex challenges.</p>
+                <p>Contacts:</p>
+                <p>We are always ready for new challenges and collaborations. Contact us for a free initial consultation and find out how we can turn your ideas into reality. Visit us at our office or fill out the online contact form to make an appointment.</p>
+                <p>ArchitectPlan - Where the art of architecture meets innovation.</p>
+                <h1>Consult our site:</h1>
+					<a href="/project" class="btn"><img src="/images/project-icon.jpeg" alt="Projects" /> Project list</a>
+				    <a href="/architect" class="btn"><img src="/images/architect-icon.jpeg" alt="Architects" /> Architect list</a>
+            </div>
+        </div>
+    </section>
+	
+	<footer>
+	       <p>Contact us: info@architectplan.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	  </footer>    
+</body>
+</html>

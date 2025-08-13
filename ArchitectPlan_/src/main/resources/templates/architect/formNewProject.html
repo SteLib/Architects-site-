@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ArchitectPlan - New Project</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<!-- Header -->
+	<header>
+				    <div>
+				        <div>
+				            <a href="/"><img src="/images/home.png" alt="Home" /></a>
+				        </div>   
+			       <div th:if="${userDetails}">
+				           <a th:text="${userDetails.username}" class="nav-log"></a><br>
+				           <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				   </div>
+				   <div th:unless="${userDetails}">
+				           <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+			       </div>
+				   <div>
+				           <a href="/project" class="nav-link">Projects</a>
+				           <a href="/architect" class="nav-link">Architects</a>
+				           <a href="/formSearchProject" class="nav-link">Search a project</a>
+				           <a href="/architect/indexRequest">Manage request</a>
+						   <a href="/architect/indexProject">Manage project</a>
+					 </div>
+				</div>
+			</header>
+	<!--Home-->
+	<div class="container">
+		<h1>Add a project</h1>
+		<form th:action="@{/architect/project}" method="POST" th:object="${project}" enctype="multipart/form-data" class="form-container">
+			<div>
+				<label>Name:</label> <span><input required type="text" th:field="${project.name}" /></span>
+				<span th:if="${#fields.hasErrors('name')}" th:errors="${project.name}"></span>
+			</div>
+			<div>
+				<label>Description:</label> <span><textarea required th:field="${project.description}" class="textarea-description"></textarea></span>
+				<span th:if="${#fields.hasErrors('description')}" th:errors="${project.description}"></span>
+			</div>
+			<div>
+				<label>Image:</label> <span><input type="file" name="image" /></span>
+			</div>
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+			</div>
+				<button type="submit" class="btn">Confirms</button>
+		</form>
+	</div>
+			<footer>
+			       <p>Contact us: info@architectplan.com</p>
+			       <p>Follow us on 
+			           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+			           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+					<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+				</p>
+			  </footer>
+</body>
+
+</html>

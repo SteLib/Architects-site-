@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ArchictPlan - Registration</title>
+    <link rel="stylesheet" href="/css/stile.css" />
+</head>
+<body>
+    <header>
+        <div>
+            <div>
+                <a href="/"><img src="/images/home.png" width="2%" alt="Home"/></a>
+            </div>   
+            <div th:if="${userDetails}">
+                <a th:text="${userDetails.username}" class="nav-log"></a><br>
+                <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+            </div>
+            <div th:unless="${userDetails}">
+                <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+            </div>
+            <div>
+                <a href="/project" class="nav-link">Projects</a>
+                <a href="/architect" class="nav-link">Architects</a>
+                <a href="/formSearchProject">Search a project</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Registration form:</h1>
+        <form th:action="@{/register}" method="POST">
+            <div>
+                <label>Name</label>
+                <span><input type="text" placeholder="name" required th:field="${user.name}"></span>
+                <span th:if="${#fields.hasErrors('user.name')}" th:errors="${user.name}" th:style="'color:orange'"></span>
+            </div>
+            <div>
+                <label>Surname</label>
+                <span><input type="text" placeholder="surname" required th:field="${user.surname}"></span>
+                <span th:if="${#fields.hasErrors('user.surname')}" th:errors="${user.surname}" th:style="'color:orange'"></span>
+            </div>
+            <div>
+                <label>Email</label>
+                <span><input type="text" placeholder="email" required th:field="${user.email}"></span>
+                <span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:orange'"></span>
+            </div>
+            <div>
+                <label>Username</label>
+                <span><input type="text" placeholder="username" required th:field="${credentials.username}"></span>
+                <span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}" th:style="'color:orange'"></span>
+            </div>
+            <div>
+                <label>Password</label>
+                <span><input type="text" placeholder="password" required th:field="${credentials.password}"></span>
+                <span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}" th:style="'color:orange'"></span>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+	
+	<footer>
+	       <p>Contact us: info@architectplan.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	 </footer>
+</body>
+</html>

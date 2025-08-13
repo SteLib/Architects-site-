@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>	ArchitectPlan -	Architect Management</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="icon" href="static/favicon.png" type="image/png">
+</head>
+
+<body>
+	<header>
+				   <div>
+				     <div>
+					      <a href="/"><img src="/images/home.png" alt="Home" /></a>
+			         </div>   
+					 
+					  <div th:if="${userDetails}">
+					        <a th:text="${userDetails.username}" class="nav-log"></a><br>
+				            <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+					 </div>
+					  <div th:unless="${userDetails}">
+						           <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+					  </div>
+					  
+				      <div>
+						       <a href="/project" class="nav-link">Projects</a>
+						       <a href="/architect" class="nav-link">Architects</a>
+						       <a href="/formSearchProject" class="nav-link">Search a project</a>
+						       <a href="/architect/indexRequest" class="nav-link">Manage request</a>
+						       <a href="/architect/indexProject"  class="nav-link">Manage project</a>
+					     	   <a href="/admin/indexArchitect" class="nav-link">Manage architect</a>
+						</div>
+					</div>
+				</header>
+	<!--Home-->
+	<div class="home">
+			<h1 class="home-text">Architect Info</h1>
+			<div th:if="${architect}">
+				<div>
+					<h3><span th:text="${architect.name}" class="highlight">Renzo</span>
+					<span th:text="${architect.surname}" class="highlight">Piano</span><br></h3>
+					<h2><span th:text="${#dates.format(architect.date_of_birth, 'dd/MM/yyyy')}" class="highlight"></span></h2>
+					
+				</div>
+				<div>
+					<h2>Projects:</h2>
+					<div th:if="${architect.projects==null || architect.projects.isEmpty()}">The architect has no projects</div>
+					<div th:each="project: ${architect.projects}">
+						<span th:text="${project.name}" class="highlight">Ponte</span>
+					</div>
+					<div th:if="${projects!=null && !projects.isEmpty()}">
+						<a th:href="@{'/admin/updateProjects/' + ${architect.id}}" class="btn">
+							<button type="button">Edit</button>
+						</a>
+					</div>
+				</div>
+				<div th:unless="${architect}">Non-existent architect</div>
+			</div>
+		</div>
+		
+			<footer>
+					    <p>Contact us: info@architectplan.com</p>
+					    <p>Follow us on 
+					        <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+					        <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+							<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+						</p>
+					</footer>
+</body>
+
+</html>

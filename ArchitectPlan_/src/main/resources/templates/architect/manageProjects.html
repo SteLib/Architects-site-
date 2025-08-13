@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ArchitectPlan - Project Management</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header>
+				    <div>
+				        <div>
+				            <a href="/"><img src="/images/home.png" alt="Home" /></a>
+				        </div>   
+			       <div th:if="${userDetails}">
+				           <a th:text="${userDetails.username}" class="nav-log"></a><br>
+				           <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				   </div>
+				   <div th:unless="${userDetails}">
+				           <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+			       </div>
+				   <div>
+				           <a href="/project" class="nav-link">Projects</a>
+				           <a href="/architect" class="nav-link">Architects</a>
+				           <a href="/formSearchProject" class="nav-link">Search a project</a>
+				           <a href="/architect/indexRequest">Manage request</a>
+						   <a href="/architect/indexProject">Manage project</a>
+					 </div>
+				</div>
+			</header>
+		<!--Home-->
+		<div class="home">
+		        <div class="home-content">
+		            <div class="home-text">
+		                <h1 class="highlight">Projects</h1>
+		            </div>
+		            <div th:if="${projects==null || projects.isEmpty()}">
+		                <p>There are no projects in the system</p>
+		            </div>
+		            <ul class="item-list">
+		                <li th:each="project : ${projects}">
+		                    <div class="home-text">
+		                        <span th:text="${project.name}">Ponte</span>
+		                    </div>
+		                    <div>
+		                        <a th:href="@{'/architect/formUpdateProject/' + ${project.id}}" class="btn">Update</a>
+		                        <a th:href="@{'/architect/deleteProjects/' + ${project.id}}" class="btn">Delete</a>
+		                    </div>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+			<footer>
+			       <p>Contact us: info@architectplan.com</p>
+			       <p>Follow us on 
+			           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+			           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+					<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+				</p>
+			  </footer>
+</body>
+
+</html>

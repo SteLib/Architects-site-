@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ArchitectPlan - Registration completed</title>
+    <link rel="stylesheet" href="/css/stile.css" />
+</head>
+    
+<body>
+	<header>
+	        <div>
+	            <div>
+	                <a href="/"><img src="/images/home.png" width="2%" alt="Home"/></a>
+	            </div>   
+	            <div th:if="${userDetails}">
+	                <a th:text="${userDetails.username}" class="nav-log"></a><br>
+	                <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+	            </div>
+	            <div th:unless="${userDetails}">
+	                <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+	            </div>
+	            <div>
+	                <a href="/project" class="nav-link">Projects</a>
+	                <a href="/architect" class="nav-link">Architects</a>
+	                <a href="/formSearchProject">Search a project</a>
+	            </div>
+	        </div>
+	    </header>
+       
+    <div class="home">
+        <h1>Registration successful</h1>
+        <div>
+            <span>Name:</span>
+            <span th:text="${user.name}"></span>
+        </div>        
+        <div>
+            <span>Surname:</span>
+            <span th:text="${user.surname}"></span>
+        </div>        
+        <div>
+            <span>Email:</span>
+            <span th:text="${user.email}"></span>
+        </div>            
+        <div>
+            <a href="/"><img src="/images/home.png" alt="Home" width="2.5%"/></a>
+        </div>
+    </div>
+	
+	<footer>
+	       <p>Contact us: info@architectplan.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	 </footer>
+</body>
+</html>

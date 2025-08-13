@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ArchitectPlan - Project management</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header>
+				    <div>
+				        <div>
+				            <a href="/"><img src="/images/home.png" alt="Home" /></a>
+				        </div>   
+			       <div th:if="${userDetails}">
+				           <a th:text="${userDetails.username}" class="nav-log"></a><br>
+				           <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				   </div>
+				   <div th:unless="${userDetails}">
+				           <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+			       </div>
+				   <div>
+				           <a href="/project" class="nav-link">Projects</a>
+				           <a href="/architect" class="nav-link">Architects</a>
+				           <a href="/formSearchProject" class="nav-link">Search a project</a>
+				           <a href="/architect/indexRequest">Manage request</a>
+						   <a href="/architect/indexProject">Manage project</a>
+					 </div>
+				</div>
+			</header>
+	<!--Home-->
+	<div class="home">
+	    <div class="home-content">
+	        <div class="home-text">
+	            <h1 class="highlight">Update project</h1>
+	        </div>
+	        <div th:if="${project}">
+	            <div class="item-list">
+	                <span th:text="${project.name}">Ponte</span>
+	                <span th:text="'(' + ${project.description} + ')'">Ponte sospeso</span>
+	            </div>
+	            <br>
+	            <div th:if="${project.architect}">
+	                <h2 class="highlight">Architect:</h2>
+	                <span th:text="${project.architect.name} + ' ' + ${project.architect.surname}">Renzo Piano</span>
+	                <a th:href="@{'/admin/addArchitect/' + ${project.id}}" class="btn">Edit architect</a>
+	            </div>
+	            <div th:unless="${project.architect}">
+	                <a th:href="@{'/admin/addArchitect/' + ${project.id}}" class="btn">Add architect</a>
+	            </div>
+	            <br>
+	            <div th:if="${project.request}">
+	                <h2 class="highlight">Request:</h2>
+	                <span th:text="${project.request.name} + ' (' + ${project.request.description} + ')'">Ponte</span>
+	                <a th:href="@{'/architect/updateRequest/' + ${project.id} + '/' + ${project.request?.id}}" class="btn">Edit Request</a>
+	            </div>
+	            <div th:if="${project.request==null}">
+	                <a th:href="@{'/architect/linkRequestToProject/' + ${project.id}}" class="btn">Add Request</a>
+	            </div>
+	        </div>
+	        <div th:unless="${project}">Non-existent project</div>
+	    </div>
+	</div>
+				<footer>
+				       <p>Contact us: info@architectplan.com</p>
+				       <p>Follow us on 
+				           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+				           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+						<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+					</p>
+				  </footer>
+</body>
+
+</html>

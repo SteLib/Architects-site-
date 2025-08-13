@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ArchitectPlan - Project</title>
+    <link rel="stylesheet" href="/css/stile.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <div>
+                <a href="/"><img src="/images/home.png" alt="Home" /></a>
+            </div>   
+            <div th:if="${userDetails}">
+                <a th:text="${userDetails.username}" class="nav-log"></a><br>
+                <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+            </div>
+            <div th:unless="${userDetails}">
+                <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+            </div>
+            <div>
+                <a href="/project" class="nav-link">Projects</a>
+                <a href="/architect" class="nav-link">Architects</a>
+                <a href="/formSearchProject" class="nav-link">Search a project</a>
+            </div>
+        </div>
+    </header>
+       
+    <div class="home">
+        <h1>Project:</h1>
+        <ul>
+            <li th:each="project : ${projects}">
+                <a th:href="@{'/project' + '/' + ${project.id}}" th:text="${project.name}"></a>
+            </li>
+        </ul>
+    </div>
+	
+	<footer>
+	       <p>Contact us: info@architectplan.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	 </footer>
+</body>
+
+</html>

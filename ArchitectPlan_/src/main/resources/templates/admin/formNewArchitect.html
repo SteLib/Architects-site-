@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>	ArchitectPlan - New Architect</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<link rel="icon" href="static/favicon.png" type="image/png">
+</head>
+
+
+<body>
+	<header>
+				   <div>
+				     <div>
+					      <a href="/"><img src="/images/home.png" alt="Home" /></a>
+			         </div>   
+					 
+					  <div th:if="${userDetails}">
+					        <a th:text="${userDetails.username}" class="nav-log"></a><br>
+				            <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+					 </div>
+					  <div th:unless="${userDetails}">
+						           <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+					  </div>
+					  
+				      <div>
+						       <a href="/project" class="nav-link">Projects</a>
+						       <a href="/architect" class="nav-link">Architects</a>
+						       <a href="/formSearchProject" class="nav-link">Search a project</a>
+						       <a href="/architect/indexRequest" class="nav-link">Manage request</a>
+						       <a href="/architect/indexProject"  class="nav-link">Manage project</a>
+					     	   <a href="/admin/indexArchitect" class="nav-link">Manage architect</a>
+						</div>
+					</div>
+				</header>
+	<!--Home-->
+			<divv class="home">
+			<div class="home-content">
+				<div class="home-text">
+					<h1>Add new architect</h1>
+					<form th:action="@{/admin/architect}" method="POST" th:object="${architect}" enctype="multipart/form-data" class="form-container">
+						<div>
+							<label>Name:</label> <span><input required type="text" th:field="${architect.name}"/></span>
+							<span th:if"${#fields.hasErrors('name')}" th:errors="${architect.name}"></span>
+						</div>
+						<div>
+							<label>Surname:</label> <span><input required type="text" th:field="${architect.surname}"/></span>
+							<span th:if"${#fields.hasErrors('surname')}" th:errors="${architect.surname}"></span>
+						</div>
+						<div>
+							<label>Date of birth:</label> <span><input required type="date"
+									th:field="${architect.date_of_birth}"/></span>
+							<span th:if"${#fields.hasErrors('date_of_birth')}" th:errors="${architect.date_of_birth}"></span>
+						</div>
+						<div>
+							<label>Image:</label> <span><input type="file" name="image"/></span>
+						</div>
+						<div th:if="${#fields.hasGlobalErrors()}">
+							<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+						</div>
+						<div>
+							<br>
+							<span><button type="submit" class="btn">Confirm</button></span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+			
+			<footer>
+					    <p>Contact us: info@architectplan.com</p>
+					    <p>Follow us on 
+					        <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+					        <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+							<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+						</p>
+			</footer>
+</body>
+
+</html>
