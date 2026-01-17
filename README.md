@@ -1,4 +1,4 @@
-# 🏛️ Architects-site-
+# 🏛️ Architects web site
 
 A dynamic web application built with **Spring Boot**, designed to showcase architect profiles and their projects. The platform offers a seamless experience for guests, registered users, and administrators, with intuitive navigation and interactive features.
 
